@@ -124,9 +124,26 @@ body {
   box-shadow: 0 0 4px rgba(0,0,0,0.2); /* 可选阴影 */
 }
 
-/* Hamburger */
-.menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
-.menu-toggle span { height: 3px; width: 25px; background: #0025B7; border-radius: 5px; }
+/* 强制在窄屏显示 hamburger（应对覆盖问题） */
+@media (max-width: 850px) {
+  .menu-toggle {
+    display: flex !important;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    right: 18px;
+    top: 30px;
+    z-index: 1001;
+  }
+
+  .menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background: #0025B7;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+}
 
 /* Overlay & Login Card */
 .overlay {
@@ -139,7 +156,10 @@ body {
   align-items: center;
   z-index: 10000;
 }
-.overlay.active { display: flex; }
+
+.overlay.active { 
+  display: flex; 
+}
 
 .login-card {
   position: relative;
