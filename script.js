@@ -119,6 +119,19 @@ function handleCredentialResponse(response) {
   const payload = decodeJwtResponse(response.credential);
   console.log('✅ Google 登录成功:', payload);
 
+  // 存储用户资料
+  localStorage.setItem('starkit_user', JSON.stringify(payload));
+
+  // 更新导航栏头像
+  const navAvatar = document.getElementById('nav-avatar');
+  navAvatar.src = payload.picture;
+  navAvatar.style.display = 'inline-block'; // 显示头像
+
+  // 隐藏登录弹窗
+  overlay.classList.remove('active');
+}
+
+
   // 显示用户信息
   document.getElementById('avatar').src = payload.picture;
   document.getElementById('name').innerText = payload.name;
@@ -130,4 +143,4 @@ function handleCredentialResponse(response) {
 
   // ✅ 也可以储存用户登录状态
   localStorage.setItem('starkit_user', JSON.stringify(payload));
-}
+
