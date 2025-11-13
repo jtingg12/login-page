@@ -112,6 +112,18 @@ body {
   color: #FFFFE5;
 }
 
+.nav-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-left: 10px;
+  display: none; /* 默认隐藏 */
+  object-fit: cover;
+  vertical-align: middle;
+  border: 2px solid #fff; /* 可选：给头像加个小白边 */
+  box-shadow: 0 0 4px rgba(0,0,0,0.2); /* 可选阴影 */
+}
+
 /* Hamburger */
 .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
 .menu-toggle span { height: 3px; width: 25px; background: #0025B7; border-radius: 5px; }
