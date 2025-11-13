@@ -33,11 +33,16 @@ navItems.forEach(link => {
 });
 
 // Mobile toggle
-menuToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-  navButtons.classList.toggle('active');
-  menuToggle.classList.toggle('active');
-});
+if (menuToggle) {  // ⚡ 先检查元素是否存在
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    navButtons.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+} else {
+  console.warn('menu-toggle element not found');
+}
+
 
 // ---------------- Login Overlay ----------------
 const overlay = document.getElementById('overlay');
@@ -95,6 +100,35 @@ btn.addEventListener('mouseover', shiftButton);
 btn.addEventListener('touchstart', shiftButton);
 form.addEventListener('input', showMsg);
 
+// 当用户点击 Log In 按钮提交时
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = uname.value.trim();
+  const password = pass.value.trim();
+
+  if (email && password) {
+    // 模拟用户对象
+    const fakeUser = {
+      name: email.split('@')[0],
+      email: email,
+      picture: 'images/login/default-avatar.png' // 你可以放一个默认头像路径
+    };
+
+    // 存进 localStorage
+    localStorage.setItem('starkit_user', JSON.stringify(fakeUser));
+
+    // 更新导航栏头像
+    const navAvatar = document.getElementById('nav-avatar');
+    navAvatar.src = fakeUser.picture;
+    navAvatar.style.display = 'inline-block';
+
+    // 关闭登录弹窗
+    overlay.classList.remove('active');
+
+    console.log('✅ 手动登录成功:', fakeUser);
+  }
+});
+
 // ---------------- Google Sign-In ----------------
 
 // 点击 Google 登录按钮时手动触发登录弹窗
@@ -131,14 +165,6 @@ function handleCredentialResponse(response) {
   overlay.classList.remove('active');
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  const user = JSON.parse(localStorage.getItem('starkit_user'));
-  if (user) {
-    const navAvatar = document.getElementById('nav-avatar');
-    navAvatar.src = user.picture;
-    navAvatar.style.display = 'inline-block';
-  }
-});
 
   // 显示用户信息
   document.getElementById('avatar').src = payload.picture;
@@ -149,7 +175,15 @@ window.addEventListener('DOMContentLoaded', () => {
   // 隐藏登录弹窗
   overlay.classList.remove('active');
 
+  window.addEventListener('DOMContentLoaded', () => {
+  const user = JSON.parse(localStorage.getItem('starkit_user'));
+  if (user) {
+    const navAvatar = document.getElementById('nav-avatar');
+    navAvatar.src = user.picture;
+    navAvatar.style.display = 'inline-block';
+  }
+});
+
   // ✅ 也可以储存用户登录状态
   localStorage.setItem('starkit_user', JSON.stringify(payload));
-
 
