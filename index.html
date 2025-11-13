@@ -1,148 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Starkit</title>
-  <link rel="stylesheet" href="nav.css">
-  <link rel="stylesheet" href="style.css">
+/* 强制在窄屏显示 hamburger（应对覆盖问题） */
+@media (max-width: 850px) {
+  .menu-toggle {
+    display: flex !important;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    right: 18px;
+    top: 30px;
+    z-index: 1001;
+  }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/vanilla-caramel" rel="stylesheet">
-</head>
-
-<body>
-
-<!-- Navigation Bar -->
-<nav class="navbar" id="navbar">
-  <div class="nav-container">
-    <div class="logo">
-      <a href="index.html"><img src="images/logo.png" alt="Starkit Logo"></a>
-    </div>
-
-    <!-- Hamburger Icon -->
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <!-- Nav Links -->
-    <ul class="nav-links" id="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Fox Friends</a></li>
-      <li><a href="#">Post It!</a></li>
-    </ul>
-
-    <!-- Nav Buttons -->
-    <div class="nav-buttons">
-      <a href="#" class="quiz-btn">Take the Quiz</a>
-      <button class="login-btn">Log In</button>
-      <img id="nav-avatar" class="nav-avatar" src="" alt="User Avatar">
-    </div>
-  </div>
-</nav>
-
-<!-- Main Content (Scroll Test) -->
-<main style="height: 1500px; background-color: #FFFFE5;"></main>
-
-<!-- Login Overlay -->
-<div class="overlay" id="overlay">
-  <div class="login-card">
-    <div class="icon">
-      <img src="images/login/user.png" alt="User Icon">
-    </div>
-    <h2>Log In</h2>
-    <div class="msg" id="msg"></div>
-
-    <form id="loginForm" onsubmit="return false;">
-      <div class="field">
-        <input type="text" id="uname" placeholder="Email">
-        <img src="images/login/user.png" class="icon-imgs">
-      </div>
-      <div class="field">
-        <input type="password" id="pass" placeholder="Password">
-        <img src="images/login/pw.png" class="icon-img">
-      </div>
-
-      <div class="divider">
-        <span></span> OR <span></span>
-      </div>
-
-      <button class="google-btn" id="googleLogin">
-        <img src="images/login/google.png" alt="Google Logo"> Sign in with Google
-      </button>
-
-      <div class="btn-container">
-        <input type="submit" id="login-btn" value="Log In">
-      </div>
-    </form>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-left">
-      <img src="images/logo.png" alt="Starkit Logo">
-      <p class="footer-slogan">“Discover your inner fox,<br>guided by your star.”</p>
-    </div>
-    <div class="footer-center">
-      <h3>Quick Links</h3>
-      <div class="links-grid">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
-        <ul>
-          <li><a href="#">Quiz</a></li>
-          <li><a href="#">Fox Friends</a></li>
-        </ul>
-        <ul>
-          <li><a href="#">Post It!</a></li>
-          <li><a href="#">Products</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-right">
-      <h3>Contact Us</h3>
-      <p><span>Email:</span> <a href="mailto:starkit.support@gmail.com">starkit.support@gmail.com</a></p>
-      <div class="social-icons">
-        <a href="#"><img src="images/footer/ins.png" alt="Instagram"></a>
-        <a href="#"><img src="images/footer/xhs.png" alt="Xiaohongshu"></a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">© 2025 Starkit. All Rights Reserved.</div>
-</footer>
-
-<!-- Google Sign-In -->
-<script src="https://accounts.google.com/gsi/client" async defer></script>
-
-<script>
-  // 初始化 Google 登录
-  window.onload = function() {
-    google.accounts.id.initialize({
-      client_id: "53254119460-3hj1559jtb4c2kthhqjijokjevjk8ua4.apps.googleusercontent.com",
-      callback: handleCredentialResponse
-    });
-  };
-</script>
-
-<div id="g_id_onload"
-     data-client_id="53254119460-3hj1559jtb4c2kthhqjijokjevjk8ua4.apps.googleusercontent.com"
-     data-callback="handleCredentialResponse">
-</div>
-
-<!-- 隐藏的 Google 登录信息容器 -->
-<div id="user-info" style="display:none;">
-  <img id="avatar" src="" alt="Avatar">
-  <p id="name"></p>
-  <p id="email"></p>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
+  .menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background: #0025B7;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+}
