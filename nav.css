@@ -163,7 +163,21 @@ body {
 }
 
 /* ---------- Mobile layout + animated menu ---------- */
-@media (max-width: 850px) {
+/* 默认字体 */
+body {
+  font-family: 'Vanilla Caramel', cursive;
+}
+
+/* 📱 手机或平板时用 Winky Sans */
+@media screen and (max-width: 1024px), 
+       screen and (max-device-width: 1024px) {
+
+  /* 切换字体 */
+  body {
+    font-family: 'Winky Sans', sans-serif;
+  }
+
+  /* Mobile Navbar layout */
   .nav-container {
     flex-direction: column;
     align-items: center;
@@ -193,14 +207,14 @@ body {
   .nav-links,
   .nav-buttons {
     width: 100%;
-    overflow: hidden;               
-    max-height: 0;                  
-    opacity: 0;                     
-    transform: translateY(-10px);   
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
     transition: max-height 0.45s cubic-bezier(.2,.9,.2,1),
                 opacity 0.35s ease,
                 transform 0.35s ease;
-    display: block;                 
+    display: block;
     background: #FFFFE5;
   }
 
@@ -237,7 +251,7 @@ body {
 
   .nav-links.active,
   .nav-buttons.active {
-    max-height: 480px; 
+    max-height: 480px;
     opacity: 1;
     transform: translateY(0);
   }
