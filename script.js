@@ -131,6 +131,14 @@ function handleCredentialResponse(response) {
   overlay.classList.remove('active');
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+  const user = JSON.parse(localStorage.getItem('starkit_user'));
+  if (user) {
+    const navAvatar = document.getElementById('nav-avatar');
+    navAvatar.src = user.picture;
+    navAvatar.style.display = 'inline-block';
+  }
+});
 
   // 显示用户信息
   document.getElementById('avatar').src = payload.picture;
@@ -143,4 +151,5 @@ function handleCredentialResponse(response) {
 
   // ✅ 也可以储存用户登录状态
   localStorage.setItem('starkit_user', JSON.stringify(payload));
+
 
