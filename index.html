@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Starkit</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="style.css">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/vanilla-caramel" rel="stylesheet">
 </head>
+
 <body>
 
 <!-- Navigation Bar -->
@@ -120,8 +121,28 @@
 <!-- Google Sign-In -->
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-<!-- JS -->
+<script>
+  // 初始化 Google 登录
+  window.onload = function() {
+    google.accounts.id.initialize({
+      client_id: "53254119460-3hj1559jtb4c2kthhqjijokjevjk8ua4.apps.googleusercontent.com",
+      callback: handleCredentialResponse
+    });
+  };
+</script>
+
+<div id="g_id_onload"
+     data-client_id="53254119460-3hj1559jtb4c2kthhqjijokjevjk8ua4.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse">
+</div>
+
+<!-- 隐藏的 Google 登录信息容器 -->
+<div id="user-info" style="display:none;">
+  <img id="avatar" src="" alt="Avatar">
+  <p id="name"></p>
+  <p id="email"></p>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
-
