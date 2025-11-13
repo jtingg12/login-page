@@ -131,5 +131,3 @@ function handleCredentialResponse(response) {
   // ✅ 也可以储存用户登录状态
   localStorage.setItem('starkit_user', JSON.stringify(payload));
 }
-
-
