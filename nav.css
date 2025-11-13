@@ -163,7 +163,7 @@ body {
 }
 
 /* ---------- Mobile layout + animated menu ---------- */
-@media (max-width: 1024px) {
+@media (max-width: 850px) {
   .nav-container {
     flex-direction: column;
     align-items: center;
@@ -447,3 +447,4 @@ body {
 #backToTop:hover {
   background-color: #ff7a0e;
 }
+
