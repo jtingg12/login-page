@@ -97,11 +97,11 @@ form.addEventListener('input', showMsg);
 
 // ---------------- Google Sign-In ----------------
 
-// ---------------- Google Sign-In Button Click ----------------
+// 点击 Google 登录按钮时手动触发登录弹窗
 const googleLoginBtn = document.getElementById('googleLogin');
 googleLoginBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  google.accounts.id.prompt(); // 调出 Google 登录弹窗
+  google.accounts.id.prompt(); // ✅ 触发 Google 登录窗口
 });
 
 // 解码 Google 返回的 ID Token
@@ -114,12 +114,12 @@ function decodeJwtResponse(token) {
   return JSON.parse(jsonPayload);
 }
 
-// Google 登录回调
+// Google 登录回调函数
 function handleCredentialResponse(response) {
   const payload = decodeJwtResponse(response.credential);
-  console.log('Google 登录成功:', payload);
+  console.log('✅ Google 登录成功:', payload);
 
-  // 显示用户信息（可选）
+  // 显示用户信息
   document.getElementById('avatar').src = payload.picture;
   document.getElementById('name').innerText = payload.name;
   document.getElementById('email').innerText = payload.email;
@@ -128,6 +128,8 @@ function handleCredentialResponse(response) {
   // 隐藏登录弹窗
   overlay.classList.remove('active');
 
-  // ✅ 这里你也可以把用户资料送去你的后端
-  // fetch('/api/google-login', { method:'POST', body: JSON.stringify(payload) })
+  // ✅ 也可以储存用户登录状态
+  localStorage.setItem('starkit_user', JSON.stringify(payload));
 }
+
+
