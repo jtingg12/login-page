@@ -120,6 +120,16 @@
 <!-- Google Sign-In -->
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 
+<script>
+  // 初始化 Google 登录
+  window.onload = function() {
+    google.accounts.id.initialize({
+      client_id: "53254119460-3hj1559jtb4c2kthhqjijokjevjk8ua4.apps.googleusercontent.com",
+      callback: handleCredentialResponse
+    });
+  };
+</script>
+
 <div id="g_id_onload"
      data-client_id="53254119460-3hj1559jtb4c2kthhqjijokjevjk8ua4.apps.googleusercontent.com"
      data-callback="handleCredentialResponse">
@@ -135,4 +145,5 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
