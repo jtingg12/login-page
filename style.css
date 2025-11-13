@@ -127,7 +127,7 @@ body {
 /* 强制在窄屏显示 hamburger（应对覆盖问题） */
 @media (max-width: 850px) {
   .menu-toggle {
-    display: flex !important;
+    display: flex;
     flex-direction: column;
     gap: 5px;
     position: absolute;
@@ -312,3 +312,4 @@ body {
 .shift-top { transform: translateY(-150%); }
 .shift-bottom { transform: translateY(150%); }
 .no-shift { transform: translate(0,0); }
+
